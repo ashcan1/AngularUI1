@@ -51,6 +51,7 @@ import { MatTableModule } from '@angular/material/table';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { StudentsComponent } from './students/students.component';
 
 
 
@@ -61,6 +62,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     TopNavComponent,
+    StudentsComponent,
   ],
 
   imports: [
