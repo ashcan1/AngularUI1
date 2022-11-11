@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { concatWith } from 'rxjs';
+import { StudentsService } from '../students.service';
 
 @Component({
   selector: 'app-students',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private studentService: StudentsService ) { }
 
   ngOnInit(): void {
+    this.studentService.getStudent()
+    .subscribe(
+      (successResponse) => {
+        console.log(successResponse);
+      },
+      (errorResponse) =>
+      console.log(errorResponse)
+
+    );
   }
 
 }
