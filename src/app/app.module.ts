@@ -52,6 +52,12 @@ import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { StudentsComponent } from './students/students.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { StudentByIdComponent } from './student-by-id/student-by-id.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core'
+
+
+
 
 
 
@@ -63,6 +69,7 @@ import { StudentsComponent } from './students/students.component';
     AppComponent,
     TopNavComponent,
     StudentsComponent,
+    StudentByIdComponent,
   ],
 
   imports: [
@@ -106,12 +113,19 @@ import { StudentsComponent } from './students/students.component';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    Ng2SearchPipeModule
+
+
+
+
+
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
-  providers: [],
+  providers: [ { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

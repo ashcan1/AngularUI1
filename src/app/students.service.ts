@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Student } from './Model/Student';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,12 @@ export class StudentsService {
 
   constructor(private httpClinet : HttpClient) { }
 
-  getStudent(): Observable<any> {
-   return this.httpClinet.get<any>(this.baseApiUrl);
+  getStudent(): Observable<Student[]> {
+   return this.httpClinet.get<Student[]>(this.baseApiUrl);
+  }
+  getStudentById(id :string): Observable <Student> {
+
+    return this.httpClinet.get<Student>(this.baseApiUrl + '/' + id )
+
   }
 }

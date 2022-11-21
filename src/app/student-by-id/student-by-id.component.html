@@ -1,0 +1,68 @@
+
+
+
+
+
+<form class="example-form">
+
+  <button class = "back" onclick="history.back()">Go Back</button>
+  <table class="example-full-width" cellspacing="0"><tr>
+
+
+    <td><mat-form-field class="example-full-width">
+      <mat-label>First Name</mat-label>
+      <input type="text" matInput [(ngModel)] ="student.firstName" name="FirstName">
+    </mat-form-field></td>
+
+
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Last Name</mat-label>
+      <input type="text" matInput [(ngModel)] ="student.lastName" name="LastName">
+    </mat-form-field></td>
+  </tr></table>
+
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input [matDatepicker]="picker" matInput [(ngModel)] = "student.dateOfBirth" name="dateOfBirth" >
+    <mat-hint>DD/MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+
+
+<div class="example-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your email</mat-label>
+    <input type="text" matInput [(ngModel)] ="student.email" name="email">
+    <mat-error *ngIf="">{{}</mat-error>
+  </mat-form-field>
+</div>
+
+
+
+<td><mat-form-field class="example-full-width">
+  <mat-label>Gender</mat-label>
+  <input type="text" matInput [(ngModel)] ="student.gender.description" name="gender">
+</mat-form-field></td>
+
+
+
+
+
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Address</mat-label>
+      <textarea matInput placeholder=""></textarea>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Address 2</mat-label>
+      <input type="text" matInput [(ngModel)] ="student.address.physicalAddress" name="address">
+    </mat-form-field>
+
+
+
+</form>
+
