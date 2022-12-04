@@ -2,6 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
+import { GenderService } from '../gender.service';
 import { Student } from '../Model/Student';
 import { StudentsService } from '../students.service';
 
@@ -46,7 +47,8 @@ export class StudentByIdComponent implements OnInit {
 
 
   constructor(private readonly StudentService : StudentsService,
-    private readonly route: ActivatedRoute) { }
+    private readonly route: ActivatedRoute,
+    private readonly GenderService : GenderService) { }
 
   ngOnInit(): void {
 
@@ -66,12 +68,25 @@ export class StudentByIdComponent implements OnInit {
             (successResponse) => {
               this.student = successResponse;
             }
-          )
+
+        );
+            this.GenderService.getGenderList()
+
+            .subscribe(
+              (succesResponse) => {
+                console.log(succesResponse);
+              }
+            )
+
+
+
 
         }
-
       }
     );
   }
-
 }
+
+
+
+
