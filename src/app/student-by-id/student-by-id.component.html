@@ -45,7 +45,17 @@
 
 <td><mat-form-field class="example-full-width">
   <mat-label>Gender</mat-label>
-  <input type="text" matInput [(ngModel)] ="student.gender.description" name="gender">
+  <mat-select>
+    <mat-option *ngFor="let gender of GenderList" value="gender.Id">
+     {{gender.description}}
+    </mat-option>
+ </mat-select>
+
+
+
+
+
+
 </mat-form-field></td>
 
 
@@ -65,4 +75,14 @@
 
 
 </form>
+
+
+
+<div class="EditButton">
+
+  <button mat-button color="primary" (click)="onUpdate()" > Edit</button>
+
+
+</div>
+
 

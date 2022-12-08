@@ -13,3 +13,4 @@ export interface Student {
   gender: Gender,
   address: Address
 }
+

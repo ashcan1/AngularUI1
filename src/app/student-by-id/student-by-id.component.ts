@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { GenderService } from '../gender.service';
+import { Gender } from '../Model/Gender';
 import { Student } from '../Model/Student';
 import { StudentsService } from '../students.service';
 
@@ -14,7 +15,7 @@ import { StudentsService } from '../students.service';
   styleUrls: ['./student-by-id.component.css']
 })
 export class StudentByIdComponent implements OnInit {
-  StudentId: string | null | undefined;
+ StudentId: string | null | undefined;
  student: Student = {
   id: '',
   firstName: '',
@@ -39,6 +40,8 @@ export class StudentByIdComponent implements OnInit {
   }
 }
 
+  GenderList: Gender[] = [];
+
 
 
 
@@ -51,6 +54,9 @@ export class StudentByIdComponent implements OnInit {
     private readonly GenderService : GenderService) { }
 
   ngOnInit(): void {
+
+
+
 
     this.route.paramMap.subscribe(
       (params) => {
@@ -74,9 +80,10 @@ export class StudentByIdComponent implements OnInit {
 
             .subscribe(
               (succesResponse) => {
-                console.log(succesResponse);
+                this.GenderList =  succesResponse;
               }
             )
+
 
 
 
@@ -84,6 +91,21 @@ export class StudentByIdComponent implements OnInit {
         }
       }
     );
+
+  }
+  onUpdate(): void  {
+
+    this.StudentService.updateStudent(this.student.id, this.student)
+      .subscribe(
+        (succesResponse) => {
+          // notification
+          console.log(succesResponse);
+        },
+
+
+      // call the student service to update students
+      );
+
   }
 }
 
