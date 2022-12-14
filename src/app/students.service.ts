@@ -22,21 +22,21 @@ export class StudentsService {
     return this.httpClinet.get<Student>(this.baseApiUrl + '/' + id )
 
   }
-  updateStudent(id: string, studentRequest: Student) : Observable<Student>{
+  updateStudent(id: string, student: Student) : Observable<Student>{
 
     const updateStudentRequest: UpdateStudentRequest = {
-      FirstName: studentRequest.firstName,
-      LastName: studentRequest.lastName,
-      DateOfBirth: studentRequest.dateOfBirth,
-      Email: studentRequest.email,
-      Mobile: studentRequest.mobile,
-      genderId: studentRequest.genderId,
-      physicalAddress: studentRequest.address.physicalAddress,
-      postalAddress: studentRequest.address.PostalAddress
+      firstName: student.firstName,
+      lastName: student.lastName,
+      dateOfBirth: student.dateOfBirth,
+      email: student.email,
+      mobile: student.mobile,
+      genderId: student.genderId,
+      physicalAddress: student.address.physicalAddress,
+      postalAddress: student.address.postalAddress
 
     }
 
-    return this.httpClinet.put<Student>(this.baseApiUrl + '/' + id, updateStudentRequest)
+    return this.httpClinet.put<Student>(this.baseApiUrl + '/' + id, updateStudentRequest);
 
   }
 }

@@ -2,11 +2,11 @@ import { DateSelectionModelChange } from "@angular/material/datepicker";
 
 export interface UpdateStudentRequest {
 
-  FirstName : string;
-  LastName : string;
-  DateOfBirth : string;
-  Email : string;
-  Mobile : number ;
+  firstName : string;
+  lastName : string;
+  dateOfBirth : string;
+  email : string;
+  mobile : number ;
   genderId: string;
   physicalAddress: string;
   postalAddress: string;

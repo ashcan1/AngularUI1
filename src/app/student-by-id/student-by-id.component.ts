@@ -36,7 +36,7 @@ export class StudentByIdComponent implements OnInit {
   address: {
     id: '',
     physicalAddress: '',
-    PostalAddress: ''
+    postalAddress: ''
   }
 }
 
