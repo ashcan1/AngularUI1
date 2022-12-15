@@ -39,5 +39,12 @@ export class StudentsService {
     return this.httpClinet.put<Student>(this.baseApiUrl + '/' + id, updateStudentRequest);
 
   }
+
+
+  deleteStudent(StudentId : string): Observable<Student> {
+
+    return this.httpClinet.delete<Student>(this.baseApiUrl + '/'+  StudentId);
+  }
+
 }
 

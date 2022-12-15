@@ -6,6 +6,7 @@ import { GenderService } from '../gender.service';
 import { Gender } from '../Model/Gender';
 import { Student } from '../Model/Student';
 import { StudentsService } from '../students.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 
@@ -15,6 +16,8 @@ import { StudentsService } from '../students.service';
   styleUrls: ['./student-by-id.component.css']
 })
 export class StudentByIdComponent implements OnInit {
+
+
  StudentId: string | null | undefined;
  student: Student = {
   id: '',
@@ -40,6 +43,7 @@ export class StudentByIdComponent implements OnInit {
   }
 }
 
+
   GenderList: Gender[] = [];
 
 
@@ -51,7 +55,11 @@ export class StudentByIdComponent implements OnInit {
 
   constructor(private readonly StudentService : StudentsService,
     private readonly route: ActivatedRoute,
-    private readonly GenderService : GenderService) { }
+    private readonly GenderService : GenderService,
+    private snakeBar : MatSnackBar)
+
+     { }
+
 
   ngOnInit(): void {
 
@@ -93,22 +101,26 @@ export class StudentByIdComponent implements OnInit {
     );
 
   }
+
+
   onUpdate(): void  {
 
     this.StudentService.updateStudent(this.student.id, this.student)
       .subscribe(
         (succesResponse) => {
           // notification
-          console.log(succesResponse);
+          this.snakeBar.open('Data Updated!' , undefined, {
+            duration: 2000
+
+          });
         },
 
-
-      // call the student service to update students
+        ( )  => {
+          //log it
+        }
       );
-
   }
+
 }
-
-
 
 

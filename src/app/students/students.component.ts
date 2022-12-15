@@ -17,12 +17,37 @@ import { createCustomElement } from '@angular/elements';
 
 export class StudentsComponent implements OnInit {
 
+  StudentId: string | null | undefined;
+  student: Student = {
+   id: '',
+   firstName: '',
+   lastName: '',
+   dateOfBirth: '',
+   email: '',
+   mobile: 0,
+   genderId: "",
+
+
+   profileImageUrl: '',
+
+   gender: {
+     id:'',
+     description:''
+   },
+
+   address: {
+     id: '',
+     physicalAddress: '',
+     postalAddress: ''
+   }
+ }
+
   ELEMENT_DATA: Student[] = [];
 
 
 
   displayedColumns: string[] = ['firstName', 'lastName','dateOfBirth','email','mobile','profileImageUrl'
-   ,'genderId','edit'];
+   ,'genderId','edit','Delete'];
 
   dataSource : MatTableDataSource<Student> =  new MatTableDataSource<Student>();
   @ViewChild(MatPaginator) paginator !: MatPaginator;
@@ -56,6 +81,19 @@ export class StudentsComponent implements OnInit {
 
   filterStudents(){
     this.dataSource.filter = this.filterString.trim().toLowerCase();
+  }
+
+  onDelete(): void {
+    this.studentService.deleteStudent(this.student.id)
+    .subscribe(
+      (successResponse) => {
+
+        console.log(successResponse);
+
+      }
+
+    )
+
   }
 
 }
