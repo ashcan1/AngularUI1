@@ -54,12 +54,6 @@
   </ng-container>
 
 
-  <ng-container matColumnDef="Delete">
-    <th mat-header-cell *matHeaderCellDef matSort-header>Delete</th>
-    <td mat-cell *matCellDef="let element"> {{element.Delete}}
-      <button mat-button color="warn" (click)="onDelete()"> Delete</button>
-    </td>
-  </ng-container>
 
 
   <ng-container matColumnDef="genderId">
@@ -95,5 +89,4 @@
 showFirstLastButtons
 aria-label="Select page of periodic elements">
 </mat-paginator>
-
 

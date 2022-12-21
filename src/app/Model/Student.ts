@@ -8,9 +8,9 @@ export interface Student {
  dateOfBirth: string,
  email: string,
  mobile: number,
-  profileImageUrl: string,
-  genderId: string,
-  gender: Gender,
-  address: Address
+profileImageUrl: string,
+genderId: string,
+gender: Gender,
+ address: Address
 }
 

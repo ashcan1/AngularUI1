@@ -1,12 +1,13 @@
-import { HttpParams } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+
 import { ActivatedRoute } from '@angular/router';
 import { GenderService } from '../gender.service';
 import { Gender } from '../Model/Gender';
 import { Student } from '../Model/Student';
 import { StudentsService } from '../students.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 
 
@@ -119,8 +120,29 @@ export class StudentByIdComponent implements OnInit {
           //log it
         }
       );
-  }
 
-}
+
+
+    }
+
+  onDelete(): void {
+    this.StudentService.deleteStudent(this.student.id)
+    .subscribe(
+      (successResponse) => {
+
+        this.snakeBar.open("Data is deleted" , undefined, {
+        duration: 2000
+        });
+
+
+      },
+
+      (errorResponse )   => {
+        //log
+      }
+
+    );
+    }
+  }
 
 

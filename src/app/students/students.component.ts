@@ -1,13 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { concatWith } from 'rxjs';
 import { Student } from '../Model/Student';
 import { StudentsService } from '../students.service';
-import { MatTable } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSlideToggleRequiredValidator } from '@angular/material/slide-toggle';
 import { MatSort } from '@angular/material/sort';
-import { createCustomElement } from '@angular/elements';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { createCustomElement } from '@angular/elements'
 
 @Component({
   selector: 'app-students',
@@ -47,16 +45,20 @@ export class StudentsComponent implements OnInit {
 
 
   displayedColumns: string[] = ['firstName', 'lastName','dateOfBirth','email','mobile','profileImageUrl'
-   ,'genderId','edit','Delete'];
+   ,'genderId','edit'];
 
   dataSource : MatTableDataSource<Student> =  new MatTableDataSource<Student>();
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) matSort!: MatSort;
   filterString = '';
 
-  constructor(private studentService: StudentsService ) { }
+  constructor(private studentService: StudentsService,
+  private snakBar : MatSnackBar )
+
+  {}
 
   ngOnInit(): void {
+
     this.studentService.getStudent()
 
 
@@ -83,17 +85,6 @@ export class StudentsComponent implements OnInit {
     this.dataSource.filter = this.filterString.trim().toLowerCase();
   }
 
-  onDelete(): void {
-    this.studentService.deleteStudent(this.student.id)
-    .subscribe(
-      (successResponse) => {
-
-        console.log(successResponse);
-
-      }
-
-    )
-
-  }
-
 }
+
+

@@ -41,10 +41,14 @@ export class StudentsService {
   }
 
 
-  deleteStudent(StudentId : string): Observable<Student> {
 
-    return this.httpClinet.delete<Student>(this.baseApiUrl + '/'+  StudentId);
+
+    deleteStudent(StudentId: string): Observable<Student> {
+
+     return this.httpClinet.delete<Student>(this.baseApiUrl + '/' + StudentId )
+
   }
 
 }
+
 
