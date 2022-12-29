@@ -8,6 +8,7 @@ import { Student } from '../Model/Student';
 import { StudentsService } from '../students.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { empty } from 'rxjs';
 
 
 
@@ -44,6 +45,10 @@ export class StudentByIdComponent implements OnInit {
   }
 }
 
+  isNewStudent = true;
+  header = '';
+
+
 
   GenderList: Gender[] = [];
 
@@ -57,7 +62,8 @@ export class StudentByIdComponent implements OnInit {
   constructor(private readonly StudentService : StudentsService,
     private readonly route: ActivatedRoute,
     private readonly GenderService : GenderService,
-    private snakeBar : MatSnackBar)
+    private snakeBar : MatSnackBar,
+    private router: Router)
 
      { }
 
@@ -76,6 +82,21 @@ export class StudentByIdComponent implements OnInit {
 
         if(this.StudentId) {
 
+          // if the route contains the keyword add
+          // this would be new student functionality
+
+          if(this.StudentId.toLocaleLowerCase() === 'Add'.toLocaleLowerCase()) {
+
+            this.isNewStudent = true;
+            this.header = "Add New Student";
+
+          }
+                 //otherwise if would be exisiting student functionallity
+          else {
+
+            this.isNewStudent = false;
+            this.header = "Edit Student";
+
           this.StudentService. getStudentById(this.StudentId)
 
 
@@ -85,6 +106,13 @@ export class StudentByIdComponent implements OnInit {
             }
 
         );
+
+          }
+
+
+
+
+
             this.GenderService.getGenderList()
 
             .subscribe(
@@ -114,6 +142,9 @@ export class StudentByIdComponent implements OnInit {
             duration: 2000
 
           });
+          setTimeout(() => {
+            this.router.navigateByUrl('students');
+          }, 2000);
         },
 
         ( )  => {
@@ -134,8 +165,11 @@ export class StudentByIdComponent implements OnInit {
         duration: 2000
         });
 
+        setTimeout(() => {
+          this.router.navigateByUrl('students');
+        }, 2000);
 
-      },
+        },
 
       (errorResponse )   => {
         //log
@@ -143,6 +177,39 @@ export class StudentByIdComponent implements OnInit {
 
     );
     }
-  }
+
+
+
+
+
+
+
+
+
+
+    onAdd(): void {
+
+      this.StudentService.addStudent(this.student)
+      .subscribe(
+        (successResponse) => {
+          this.snakeBar.open('New Student Added', undefined,{
+            duration: 2000
+          });
+
+          setTimeout(() => {
+            this.router.navigateByUrl(`students/${successResponse.id}`);
+          }, 2000);
+        },
+        (errorResponse )   => {
+          //log
+        }
+
+      );
+
+
+      }
+
+    }
+
 
 

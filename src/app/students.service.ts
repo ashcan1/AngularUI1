@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AddStudent } from './Model/AddStudent';
 import { Student } from './Model/Student';
 import { UpdateStudentRequest } from './Model/updatestudentsrequest';
 
@@ -10,6 +11,7 @@ import { UpdateStudentRequest } from './Model/updatestudentsrequest';
 export class StudentsService {
 
  private baseApiUrl = 'https://localhost:7248/Student';
+
 
   constructor(private httpClinet : HttpClient) { }
 
@@ -48,6 +50,24 @@ export class StudentsService {
      return this.httpClinet.delete<Student>(this.baseApiUrl + '/' + StudentId )
 
   }
+
+    addStudent(student : Student): Observable<Student>{
+
+      const AddStudent: AddStudent = {
+        firstName: student.firstName,
+        lastName: student.lastName,
+        dateOfBirth: student.dateOfBirth,
+        email: student.email,
+        mobile: student.mobile,
+        genderId: student.genderId,
+        physicalAddress: student.address.physicalAddress,
+        postalAddress: student.address.postalAddress
+
+     };
+
+      return this.httpClinet.post<Student>(this.baseApiUrl + '/add' , AddStudent);
+
+    }
 
 }
 

@@ -5,29 +5,37 @@
 
 }
 
-
-
-
 .example-full-width {
-   width: 100%;
-  }
-
-td {
+  width: 100%;
+ }
+ .td {
   padding-right: 8px;
    }
 
 
    .EditButton {
 
-   margin-left: 200px;
+    margin-left: 200px;
     background-color: aquamarine;
+   }
 
-
-
-
-
-
+   .page-header {
+    padding: 5px;
+    text-align: center;
+    background: whiet;
+    color: black;
+    font-size: 30px;
 
    }
+   .test{
+    margin-left: 200px;
+    background-color: aquamarine;
+   }
+
+
+
+
+
+
 
 
