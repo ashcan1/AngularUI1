@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { text } from 'body-parser';
 import { Observable } from 'rxjs';
 import { AddStudent } from './Model/AddStudent';
 import { Student } from './Model/Student';
@@ -69,6 +70,23 @@ export class StudentsService {
 
     }
 
+
+
+  uploadImage(StudentId: string, file:File): Observable<any>{
+
+  const formdata = new FormData();
+  formdata.append("profileImage", file);
+  return this.httpClinet.post(this.baseApiUrl + StudentId + '/upload-image',
+  formdata, {
+    responseType: 'text'
+  }
+  );
+
+}
+
+getImagePath(relativePath: string) {
+  return `${this.baseApiUrl}/${relativePath}`;
+}
 }
 
 
