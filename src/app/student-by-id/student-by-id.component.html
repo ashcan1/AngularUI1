@@ -21,11 +21,12 @@
     </div>
   </div>
 
+<br>
+  <button  style="margin-left: 800px;margin-bottom: 40px;" mat-raised-button color="primary">
+    <a routerLink="/students" color="primary" mat-raised-button>
+    Go Back
+ </a></button>
 
-  <button mat-raised-button color="primary"></button>
-              <a routerLink="/students" color="primary" mat-raised-button>
-             Go Back
-          </a>
 
 
   <table class="example-full-width" cellspacing="0"><tr>
@@ -98,6 +99,7 @@
   <button mat-raised-button color="primary"(click)="onUpdate()">Save</button>
   <button mat-raised-button color="warn" (click)="onDelete()">Delete</button>
 </div>
+
 <div class="row between-xs" *ngIf="isNewStudent">
   <button mat-raised-button color="primary" (click)="onAdd()">Add</button>
 </div>

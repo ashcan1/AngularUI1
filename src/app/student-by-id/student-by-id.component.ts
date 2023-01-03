@@ -206,6 +206,7 @@ export class StudentByIdComponent implements OnInit {
         },
         (errorResponse )   => {
           //log
+          console.log(errorResponse);
         }
 
       );
