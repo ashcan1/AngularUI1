@@ -123,7 +123,7 @@ export class StudentByIdComponent implements OnInit {
               (succesResponse) => {
                 this.GenderList =  succesResponse;
               }
-            )
+            );
 
 
 
