@@ -37,7 +37,7 @@ export class StudentsService {
       physicalAddress: student.address.physicalAddress,
       postalAddress: student.address.postalAddress
 
-    }
+    };
 
     return this.httpClinet.put<Student>(this.baseApiUrl + '/' + id, updateStudentRequest);
 

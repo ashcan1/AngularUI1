@@ -16,7 +16,7 @@
   </div>
   <div class="row">
     <div class="col-xs-12 row center-xs mt-1" *ngIf="!isNewStudent">
-      <input hidden type="file" #imageUpload (change)="uploadImage($event)">
+      <input hidden type="file" #imageUpload (change)="($event)">
       <button style="margin-left: 800px; margin-top: 40px;"mat-raised-button color="primary" (click)="imageUpload.click()">Change Image</button>
     </div>
   </div>

@@ -90,7 +90,7 @@ export class StudentByIdComponent implements OnInit {
 
             this.isNewStudent = true;
             this.header = "Add New Student";
-            this.setImage();
+
 
           }
                  //otherwise if would be exisiting student functionallity
@@ -104,7 +104,7 @@ export class StudentByIdComponent implements OnInit {
           .subscribe (
             (successResponse) => {
               this.student = successResponse;
-              this.setImage();
+
             },
 
 
@@ -151,9 +151,6 @@ export class StudentByIdComponent implements OnInit {
           }, 2000);
         },
 
-        ( )  => {
-          //log it
-        }
       );
 
 
@@ -175,20 +172,8 @@ export class StudentByIdComponent implements OnInit {
 
         },
 
-      (errorResponse )   => {
-        //log
-      }
-
     );
     }
-
-
-
-
-
-
-
-
 
 
     onAdd(): void {
@@ -201,55 +186,14 @@ export class StudentByIdComponent implements OnInit {
           });
 
           setTimeout(() => {
-            this.router.navigateByUrl(`students/${successResponse.id}`);
+            this.router.navigateByUrl(`students`);
           }, 2000);
         },
-        (errorResponse )   => {
-          //log
-          console.log(errorResponse);
-        }
 
       );
    }
 
-      uploadImage(event:any) : void {
-        if(this.StudentId) {
-          const file: File = event.taget.file[0];
-          this.StudentService.uploadImage(this.student.id, file)
-          .subscribe(
-            (successResponse) => {
-              this.student.profileImageUrl = successResponse;
-              this.setImage();
-
-              this.snakeBar.open('Image uploaded', undefined,{
-                duration: 2000
-              });
-
-            },
-            (errorResponse) => {
-
-            }
-          );
-
-        }
-      }
-
-
-
-       setImage(): void {
-        if(this.student.profileImageUrl){
-          //fetch image by url
-          this.disPlayImage = this.StudentService.getImagePath(this.student.profileImageUrl);
-        }
-        else {
-          //display defult
-          this.disPlayImage = '/assets/default.jpg';
-        }
-
-
-      }
-
-    }
+  }
 
 
 
